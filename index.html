@@ -1,36 +1,36 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>棕榈硕博毕业生就业统计</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>棕榈大道硕博毕业生职业发展追踪</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
         :root {
             --primary: #2D8F97;
-            --primary-light: #3ab0bb;
-            --primary-dark: #246a70;
-            --light-bg: #f8fafc;
-            --card-bg: #ffffff;
+            --primary-light: #E0F0F2;
+            --primary-dark: #1A6A71;
+            --accent: #FFB347;
             --text: #333333;
-            --text-light: #718096;
-            --border: #e2e8f0;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --light: #FFFFFF;
+            --gray: #F5F9FA;
+            --border: #C1DADD;
         }
         
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'PingFang SC', 'Hei', sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #f1f9fa 0%, #e2f1f2 100%);
-            color: var(--text);
-            min-height: 100vh;
+            background: linear-gradient(135deg, #F8FDFF 0%, #F0FAFB 100%);
             padding: 20px;
+            color: var(--text);
             line-height: 1.6;
+            min-height: 100vh;
         }
         
         .container {
@@ -38,111 +38,176 @@
             margin: 0 auto;
         }
         
-        header {
-            display: flex;
-            align-items: center;
-            padding: 20px 0 30px;
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
             position: relative;
-            border-bottom: 2px solid rgba(45, 143, 151, 0.1);
+            padding: 15px 0;
         }
-        
-        .logo-section {
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-        }
-        
-        .logo {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            border-radius: 50%;
+ 
+           /* LOGO容器样式 */
+           .logo-container {
+            height: 80px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
-            box-shadow: var(--shadow);
         }
         
-        .logo i {
+        /* LOGO图片样式 */
+        .logo-img {
+            height: 60px; /* 调整高度以适应您的LOGO */
+            width: auto; /* 保持宽高比 */
+            max-width: 300px; /* 最大宽度限制 */
+        }
+  
+        .header h1 {
+            color: var(--primary);
             font-size: 32px;
-            color: white;
+            margin-bottom: 5px;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
         
-        .header-text h1 {
-            font-size: 28px;
+        
+        .stat-card {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 20px;
+            min-width: 220px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(45, 143, 151, 0.1);
+            border-top: 4px solid var(--primary);
+        }
+        
+        .stat-value {
+            font-size: 36px;
             font-weight: 700;
-            color: var(--primary-dark);
+            color: var(--primary);
             margin-bottom: 5px;
         }
         
-        .header-text p {
+        .stat-label {
+            color: #5A7D84;
             font-size: 16px;
-            color: var(--text-light);
-            opacity: 0.9;
-        }
-        
-        .header-text .date-tag {
-            background: var(--primary);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            margin-top: 8px;
-            display: inline-block;
         }
         
         .tabs {
             display: flex;
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
+            justify-content: center;
             margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         
         .tab {
-            flex: 1;
-            text-align: center;
-            padding: 18px 0;
-            font-weight: 600;
-            color: var(--text-light);
+            padding: 14px 30px;
+            background: var(--light);
+            border: 1px solid var(--border);
+            border-radius: 30px;
             cursor: pointer;
+            font-weight: 600;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            min-width: 160px;
+            text-align: center;
+            color: var(--primary);
+            font-size: 16px;
         }
         
-        .tab.active {
-            color: var(--primary-dark);
-            background: rgba(45, 143, 151, 0.08);
-        }
-        
-        .tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
+        .tab.active, .tab:hover {
             background: var(--primary);
-        }
-        
-        .tab:hover:not(.active) {
-            background: rgba(45, 143, 151, 0.05);
+            color: var(--light);
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(45, 143, 151, 0.25);
         }
         
         .tab-content {
             display: none;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
+            animation: fadeIn 0.5s;
         }
         
         .tab-content.active {
             display: block;
-            animation: fadeIn 0.5s ease;
+        }
+        
+        .table-container {
+            background: var(--light);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(45, 143, 151, 0.15);
+            margin-bottom: 40px;
+            overflow-x: auto;
+            position: relative;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1000px;
+        }
+        
+        th {
+            background: var(--primary);
+            color: var(--light);
+            padding: 18px 16px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        
+        td {
+            padding: 15px 16px;
+            border-bottom: 1px solid #E6F1F3;
+            word-wrap: break-word;
+            min-width: 130px;
+            vertical-align: top;
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--gray);
+        }
+        
+        tr:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .link-cell {
+            white-space: nowrap; /* 防止内容换行 */
+            min-width: 120px; /* 设置最小宽度 */
+        }
+
+        .link-cell a {
+            color: var(--primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            background: rgba(45, 143, 151, 0.1);
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap; 
+        }
+        
+        .link-cell a:hover {
+            background: rgba(45, 143, 151, 0.2);
+            text-decoration: none;
+        }
+        
+        .link-cell a i {
+            margin-right: 5px;
+            flex-shrink: 0; /* 防止图标缩小 */
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #7A9CA1;
+            font-size: 15px;
+            margin-top: 20px;
+            border-top: 1px solid var(--border);
         }
         
         @keyframes fadeIn {
@@ -150,698 +215,1448 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .table-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 25px;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .table-header h2 {
-            color: var(--primary-dark);
-            font-size: 22px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .table-header h2 i {
-            color: var(--primary);
-        }
-        
-        .search-box {
-            position: relative;
-        }
-        
-        .search-box input {
-            padding: 10px 15px 10px 40px;
-            border: 1px solid var(--border);
-            border-radius: 30px;
-            width: 300px;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-        
-        .search-box input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(45, 143, 151, 0.1);
-        }
-        
-        .search-box i {
-            position: absolute;
-            left: 15px;
-            top: 12px;
-            color: #a0aec0;
-        }
-        
-        .table-container {
-            overflow-x: auto;
-            padding: 0 20px;
-            max-height: 520px;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
-            min-width: 1000px;
-        }
-        
-        th {
-            background-color: var(--primary);
-            color: white;
-            text-align: left;
-            padding: 16px 15px;
-            font-weight: 600;
-            position: sticky;
-            top: 0;
-        }
-        
-        td {
-            padding: 14px 15px;
-            border-bottom: 1px solid var(--border);
-            color: var(--text);
-            word-wrap: break-word;
-            vertical-align: top;
-        }
-        
-        tr:hover {
-            background-color: rgba(45, 143, 151, 0.03);
-        }
-        
-        th:nth-child(1), td:nth-child(1) { width: 18%; }
-        th:nth-child(2), td:nth-child(2) { width: 22%; }
-        th:nth-child(3), td:nth-child(3) { width: 18%; min-width: 150px; }
-        th:nth-child(4), td:nth-child(4) { width: 12%; }
-        th:nth-child(5), td:nth-child(5) { width: 15%; }
-        th:nth-child(6), td:nth-child(6) { width: 15%; }
-        
-        .program-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s;
-            display: inline-block;
-            padding: 5px 0;
-        }
-        
-        .program-link:hover {
-            color: var(--primary-dark);
-            text-decoration: underline;
-        }
-        
-        .footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 25px;
-            border-top: 1px solid var(--border);
-        }
-        
-        .pagination {
-            display: flex;
-            gap: 8px;
-        }
-        
-        .pagination button {
-            background: #edf2f7;
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .pagination button:hover:not(.active) {
-            background: #e2e8f0;
-        }
-        
-        .pagination button.active {
-            background: var(--primary);
-            color: white;
-            font-weight: 600;
-        }
-        
-        .download-btn {
-            background: linear-gradient(to right, var(--primary), var(--primary-light));
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s;
-        }
-        
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(45, 143, 151, 0.3);
-        }
-        
-        .no-results {
-            padding: 30px;
-            text-align: center;
-            color: var(--text-light);
-            font-style: italic;
-        }
-        
-        @media (max-width: 992px) {
-            .header-text h1 {
-                font-size: 24px;
-            }
-            
-            .header-text p {
-                font-size: 14px;
-            }
-            
-            .search-box input {
-                width: 250px;
-            }
-        }
-        
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-            
-            .logo-section {
-                justify-content: center;
-            }
-            
             .tabs {
                 flex-direction: column;
+                align-items: center;
             }
             
-            .table-header {
-                flex-direction: column;
-                gap: 15px;
-                align-items: flex-start;
-            }
-            
-            .search-box input {
+            .tab {
                 width: 100%;
+                margin-bottom: 8px;
+                padding: 12px 20px;
             }
             
-            .footer {
-                flex-direction: column;
-                gap: 20px;
+            body {
+                padding: 15px;
             }
             
-            .pagination {
-                order: 2;
+            .header h1 {
+                font-size: 26px;
+            }
+            
+            .stat-card {
+                min-width: calc(50% - 20px);
             }
         }
         
         @media (max-width: 480px) {
-            .header-text h1 {
+            .stat-card {
+                min-width: 100%;
+            }
+            
+            .header h1 {
                 font-size: 22px;
             }
-            
-            .table-header h2 {
-                font-size: 18px;
-            }
         }
-    </style>
+    
+@media (max-width: 768px) {
+    .table-container table, .table-container thead, .table-container tbody, .table-container th, .table-container td, .table-container tr {
+        display: block;
+    }
+    .table-container thead {
+        display: none;
+    }
+    .table-container tr {
+        margin-bottom: 15px;
+        background: #fff;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .table-container td {
+        padding: 10px;
+        text-align: left;
+        border: none;
+        position: relative;
+    }
+    .table-container td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        font-weight: bold;
+        color: #2D8F97;
+        min-width: 120px;
+    }
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo-section">
-                <div class="logo">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <div class="header-text">
-                    <h1>棕榈硕博毕业生就业统计</h1>
-                    <p>全球毕业生就业数据调研 · 2025年最新数据</p>
-                    <span class="date-tag">数据更新至 2025年07月</span>
-                </div>
-            </div>
-        </header>
-        
-        <div class="tabs">
-            <div class="tab active" data-tab="humanities">全球人文社科</div>
-            <div class="tab" data-tab="stem">全球理工科</div>
-            <div class="tab" data-tab="business">全球商科</div>
-        </div>
-        
-        <!-- 全球人文社科 -->
-        <div class="tab-content active" id="humanities">
-            <div class="table-header">
-                <h2><i class="fas fa-book-open"></i> 全球人文社科毕业生就业详情</h2>
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="搜索毕业院校..." class="search-input" data-table="humanities">
-                </div>
-            </div>
-            
-            <div class="table-container">
-                <table id="humanities-table">
-                    <thead>
-                        <tr>
-                            <th>毕业院校</th>
-                            <th>毕业项目</th>
-                            <th>毕业项目链接</th>
-                            <th>毕业生化名</th>
-                            <th>就职单位</th>
-                            <th>就职岗位</th>
-                        </tr>
-                    </thead>
-                    <tbody id="humanities-tbody">
-                        <!-- 数据将通过JS动态加载 -->
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="footer">
-                <div class="pagination" id="humanities-pagination">
-                    <!-- 分页按钮将通过JS动态生成 -->
-                </div>
-            </div>
-        </div>
-        
-        <!-- 全球理工科 -->
-        <div class="tab-content" id="stem">
-            <div class="table-header">
-                <h2><i class="fas fa-microscope"></i> 全球理工科毕业生就业详情</h2>
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="搜索毕业院校..." class="search-input" data-table="stem">
-                </div>
-            </div>
-            
-            <div class="table-container">
-                <table id="stem-table">
-                    <thead>
-                        <tr>
-                            <th>毕业院校</th>
-                            <th>毕业项目</th>
-                            <th>毕业项目链接</th>
-                            <th>毕业生化名</th>
-                            <th>就职单位</th>
-                            <th>就职岗位</th>
-                        </tr>
-                    </thead>
-                    <tbody id="stem-tbody">
-                        <!-- 数据将通过JS动态加载 -->
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="footer">
-                <div class="pagination" id="stem-pagination">
-                    <!-- 分页按钮将通过JS动态生成 -->
-                </div>
-            </div>
-        </div>
-        
-        <!-- 全球商科 -->
-        <div class="tab-content" id="business">
-            <div class="table-header">
-                <h2><i class="fas fa-chart-line"></i> 全球商科毕业生就业详情</h2>
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="搜索毕业院校..." class="search-input" data-table="business">
-                </div>
-            </div>
-            
-            <div class="table-container">
-                <table id="business-table">
-                    <thead>
-                        <tr>
-                            <th>毕业院校</th>
-                            <th>毕业项目</th>
-                            <th>毕业项目链接</th>
-                            <th>毕业生化名</th>
-                            <th>就职单位</th>
-                            <th>就职岗位</th>
-                        </tr>
-                    </thead>
-                    <tbody id="business-tbody">
-                        <!-- 数据将通过JS动态加载 -->
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="footer">
-                <div class="pagination" id="business-pagination">
-                    <!-- 分页按钮将通过JS动态生成 -->
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="container">
+<div class="header">
 
-    <script>
-        // 毕业生数据 - 全球人文社科
-        const humanitiesData = [
-            ["Harvard University", "Master in Public Administration in International Development", "https://www.hks.harvard.edu/educational-programs/masters-programs/master-public-administration-international-development", "张*", "World Bank Group", "Consultant"],
-            ["Harvard University", "Master of Laws", "https://hls.harvard.edu/graduate-program/ll-m-program/", "马*", "Harvard Law School", "Research Assistant"],
-            ["Harvard University", "Master of Public Health", "https://hsph.harvard.edu/program-finder/?pf_degree_type=masters-degrees", "N*", "United Nations Women", "Data Analyst & Monitoring Consultant"],
-            ["Columbia University", "Master of Architecture", "https://www.arch.columbia.edu/programs/1-master-of-architecture", "郝*", "Rocky Mountain Institute (RMI)", "Principal"],
-            ["Columbia University", "Master of Arts in Comparative and International Education", "https://www.tc.columbia.edu/international-and-transcultural-studies/international-and-comparative-education/", "林*", "美国湾区某线上教育公司", "课程设计"],
-            ["Columbia University", "Master of Arts in Quantitative Methods in the Social Sciences", "https://stat.columbia.edu/masters-programs/ma-quantitative-methods-social-sciences/", "刘*", "Aon", "Health Analytics Consultant"],
-            ["Columbia University", "Master of Arts in Social Organizational Psychology", "https://www.tc.columbia.edu/organization-and-leadership/social-organizational-psychology/degrees--requirements/social-organizational-psychology-ma/", "俞*", "Retensa LLC", "Talent Management Consultant"],
-            ["Columbia University", "Master of Public Administration", "https://www.sipa.columbia.edu/sipa-education/masters-programs/master-public-administration", "张*", "Bank of Ningbo Suzhou Branch", "资产托管部产品经理"],
-            ["Columbia University", "Master of Public Administration", "https://sipa.columbia.edu/academics/programs/master-public-administration", "崔*", "Industrial and Commercial Bank of China, New York Branch", "Associate, Corporate Strategy and Research"],
-            ["Columbia University", "Master of Public Administration in International Finance and Economic Policy", "https://bulletin.columbia.edu/sipa/concentrations/ifep/", "陈*", "World Bank Group", "Cloud Program Management Office Data Analyst"],
-            ["University of Pennsylvania", "Master of Science in Social Policy & Data Analytics", "https://catalog.upenn.edu/graduate/programs/social-policy-data-analytics-mssp/", "张*", "ThinkTank Health Development Research Center", "Project Manager Assistant"],
-            ["Duke University", "Master of Arts in Political Science", "https://polisci.duke.edu/graduate/ma", "郭*", "New York University", "Research Assistant"],
-            ["Northwestern University", "Master of Laws", "https://www.law.northwestern.edu/academics/degree-programs/llms/llm/", "洪*", "北京植德律师事务所", "律师"],
-            ["Northwestern University", "Master of Science in Communication", "https://msc.northwestern.edu/", "何*", "Valeo VLS North America R&D Center", "North America Patent Site Coordinator"],
-            ["Johns Hopkins University", "Master of Business Administration - Information Systems Concentration", "https://carey.jhu.edu/programs/master-science-programs/ms-information-systems-artificial-intelligence", "王*", "CWP Consulting, LLC", "Business Consultant"],
-            ["Vanderbilt University", "Master of Education in Child Studies", "https://peabody.vanderbilt.edu/academics/masters-programs/child-studies-med/", "王*", "University of Georgia", "博士"],
-            ["Vanderbilt University", "Master of Education in Human Development Studies", "https://peabody.vanderbilt.edu/academics/masters-programs/human-development-counseling-med/", "徐*", "Center for Counseling and Community Wellbeing", "Doctoral Clinical Extern"],
-            ["Vanderbilt University", "Master of Laws", "https://law.vanderbilt.edu/llm-program/", "杜*", "Southern Environmental Law Center", "Research Assistant"],
-            ["New York University", "Master of Arts in Cinema Studies", "https://tisch.nyu.edu/cinema-studies/courses/ma-in-cinema-studies.html", "彭*", "IVIDEA Studio (青藤文化)", "Chief Executive Director, Cinematographer"],
-            ["New York University", "Master of Arts in International Politics and Business", "https://www.stern.nyu.edu", "王*", "New York University China-US Relations Research Center", "助理研究员"],
-            ["New York University", "Master of Arts in Media, Culture and Communication", "https://steinhardt.nyu.edu/degree/ma-media-culture-and-communication", "方*", "Meal Subscription & Restaurant", "Co-founder"],
-            ["New York University", "Master of Arts in Teaching English to Speakers of Other Languages", "https://steinhardt.nyu.edu/degree/ma-teaching-english-speakers-other-languages-non-certification", "曾*", "某英语教育机构", "英语教学相关"],
-            ["University of Southern California", "Master of Communication Management", "https://annenberg.usc.edu/academics/communication-mcm", "浦*", "NBA China", "Management Trainee"],
-            ["University of Southern California", "Master of Communication Management", "https://annenberg.usc.edu/academics/communication-mcm", "徐*", "某500强企业", "部门经理"],
-            ["University of Southern California", "Master of Science in Communication Data Science", "https://annenberg.usc.edu/academics/communication-data-science-ms", "马*", "Apple", "Software Engineer Data Scientist"],
-            ["Carnegie Mellon University", "Master of Science in Language Technologies", "https://lti.cmu.edu/academics/masters-programs/mlt.html", "许*", "Affirm, Inc.", "Data Scientist"],
-            ["Rutgers University–New Brunswick", "Master of City and Regional Planning", "https://bloustein.rutgers.edu/graduate/uppd/mcrp/", "罗*", "Ferrandino & Associates", "城市规划师"],
-            ["University of Connecticut", "Master of Arts in Sociology", "https://catalog.uconn.edu/graduate/degree-programs/sociology-ma-phd/", "蒲*", "University of Connecticut", "Dissertation Researcher; Instructor of Sociology"],
-            ["University of Cambridge", "Master of Philosophy in Asian & Middle Eastern Studies", "https://www.ames.cam.ac.uk/postgraduates/prospective-masters-students/masters-middle-eastern-studies", "颜*", "CapchainX", "Business Development Manager"],
-            ["University of Oxford", "Master of Philosophy in Greek and/or Latin Languages and Literature", "https://www.ox.ac.uk/admissions/graduate/courses/mphil-greek-andor-latin-languages-and-literature", "陈*", "University of Oxford", "博士"],
-            ["Nanyang Technological University", "Master of Science in Marketing Science", "https://www.ntu.edu.sg/business/admissions/graduate-studies/msc-marketing-science/home", "何*", "HSBC Hong Kong", "Commercial Banking Assistant Manager"],
-            ["University of Southampton", "Master of Public Administration", "https://www.southampton.ac.uk/courses/public-administration-masters-mpa", "李*", "某国企", "未透露"]
-        ];
-
-        // 全球理工科完整数据
-        const stemData = [
-            ["Stanford University", "Master of Science in Electrical Engineering", "https://ee.stanford.edu/current-ms", "邓*", "ETH Zurich", "Doctor of Philosophy in Information Technology and Electrical Engineering"],
-            ["Stanford University", "Master of Science in Electrical Engineering", "https://ee.stanford.edu/current-ms", "李*", "Meta Platforms, Inc.", "Machine Learning Engineer"],
-            ["Stanford University", "Doctor of Philosophy in Computer Science", "https://cs.stanford.edu/admissions/phd", "曾*", "Stanford University", "Doctor of Philosophy in Electrical Engineering"],
-            ["Georgia Institute of Technology", "Master of Science in Electrical and Computer Engineering", "https://ece.gatech.edu/graduate/masters-degrees", "樊*", "Texas Instruments", "Circuit Engineer"],
-            ["University of California, Los Angeles", "Master of Science in Electrical Engineering", "https://grad.ucla.edu/programs/school-of-engineering-and-applied-science/electrical-computer-engineering/", "郭*", "ByteDance Ltd.", "算法工程师"],
-            ["Carnegie Mellon University", "Master of Science in Electrical and Computer Engineering", "https://www.ece.cmu.edu/academics/ms-ece/index.html", "麻*", "Oracle Corporation", "Machine Learning Engineer"],
-            ["Johns Hopkins University", "Master of Science in Biomedical Engineering", "https://www.bme.jhu.edu/academics/graduate/masters-programs/masters-program/", "朱*", "Johns Hopkins University", "Doctor of Philosophy in Electrical Engineering"],
-            ["Carnegie Mellon University", "Master of Science in Electrical and Computer Engineering", "https://www.ece.cmu.edu/academics/ms-ece/index.html", "李*", "Google LLC", "Software Engineer"],
-            ["University of Florida", "Master of Science in Electrical and Computer Engineering", "https://www.eng.ufl.edu/", "杨*", "University of Florida", "Doctor of Philosophy in Electrical Engineering"],
-            ["University of Michigan", "Doctor of Philosophy in Robotics", "https://robotics.umich.edu/academic-program/admissions-info/", "王*", "某美国大学", "Faculty"],
-            ["New York University", "Master of Science in Computer Engineering", "https://engineering.nyu.edu/academics/programs/computer-engineering-ms", "庄*", "State-owned Enterprise", "国企AI大模型方向做技术开发"],
-            ["New York University", "Master of Science in Computer Engineering", "https://engineering.nyu.edu/academics/programs/computer-engineering-ms", "陈*", "United Nations related project", "未透露"],
-            ["Duke University", "Master of Engineering in Electrical and Computer Engineering", "https://ece.duke.edu/academics/masters/meng/", "周*", "Intel Corporation", "Machine Learning Engineer"],
-            ["University of North Carolina at Chapel Hill", "Master of Science in Biostatistics", "https://sph.unc.edu/bios/ms/", "何*", "University of Waterloo", "PhD in Biostats"],
-            ["Delft University of Technology", "Master of Science in Electrical Engineering", "https://www.tudelft.nl/en/education/programmes/masters/ee/msc-electrical-engineering", "郭*", "Huawei HiSilicon or VeriSilicon Holdings Co., Ltd.", "IC engineer"],
-            ["Cornell University", "Master of Engineering in Electrical and Computer Engineering", "https://www.ece.cornell.edu/ece/programs/graduate-programs/meng-program/meng-admissions-and-applying", "郭*", "Huawei Technologies Co., Ltd.", "Hardware direction"],
-            ["University of Southern California", "Master of Science in Translational Biotechnology", "https://dtg.usc.edu/site/index.php/biotechnology/", "孙*", "University of Southern California", "Doctor of Philosophy in Biomedical and Biological Sciences"],
-            ["Columbia University", "Master of Science in Electrical Engineering", "https://www.ee.columbia.edu/ms-program-ee", "舒*", "Undisclosed US tech startup (company name not provided)", "ML Engineer"],
-            ["University of California, San Diego", "Master of Science in Mechanical Engineering", "http://maeweb.ucsd.edu/grad/ms", "刘*", "Embodied Intelligence Startup", "R&D position"],
-            ["Cornell University", "Master of Engineering in Environmental Engineering", "https://www.engineering.cornell.edu/cee/civil-environmental-engineering-meng/", "高*", "Environmental Research Assistant", "R&D position"],
-            ["University of California, San Diego", "Master of Science in Electrical and Computer Engineering", "https://www.google.com.hk/url?sa=t&source=web&rct=j&opi=89978449&url=https://ece.ucsd.edu/graduate/information-new-ece-graduate-students&ved=2ahUKEwiDqLviw_yNAxWyxzgGHSQaBxMQjBB6BAg5EAE&usg=AOvVaw0jIDW_6kpq4GAAKmbmt3wo", "叶*", "Amazon.com, Inc.", "Software Development Engineer (SDE)"],
-            ["Harvard University", "Master of Public Health in Epidemiology", "https://hsph.harvard.edu/program/mph-epidemiology/", "张*", "Various startups (participated in 8 startups during master's)", "Partner"],
-            ["Oklahoma State University", "Master of Science in Animal Science", "https://go.okstate.edu/graduate-academics/programs/masters/animal-science-ms.html", "胡*", "Oklahoma State University", "Doctor of Philosophy in Animal Science"],
-            ["Stanford University", "Master of Science in Civil and Environmental Engineering", "https://cee.stanford.edu/academics-admission/graduate-degrees/ms-programs", "汤*", "Water Group", "Civil Engineer"],
-            ["Columbia University", "Master of Science in Biostatistics", "https://www.publichealth.columbia.edu/academics/departments/biostatistics", "李*", "New York University Langone Medical Center", "Data Analyst"],
-            ["New York University", "Master of Science in Data Science", "https://cds.nyu.edu/admissions/masters-in-data-science-overview/", "郭*", "Capital One Financial Corporation", "Senior Machine Learning Engineer"],
-            ["Georgia Institute of Technology", "Master of Computer Science", "https://www.gatech.edu/academics/degrees/masters/computer-science-ms", "严*", "CornerCap Investment Counsel", "Quantitative Research Analyst"],
-            ["Vanderbilt University", "Master of Science in Electrical Engineering", "https://engineering.vanderbilt.edu/departments/electrical-computer-engineering/graduate-programs/", "闫*", "ZTE Corporation USA", "Software Quality Assurance Engineer"],
-            ["University of Pennsylvania", "Master of Computer and Information Technology", "https://www.cis.upenn.edu/graduate/program-offerings/master-of-computer-and-information-technology/", "王*", "Microsoft Corporation", "Software Engineer II"],
-            ["Columbia University", "Master of Science in Operations Research", "https://www.engineering.columbia.edu/academics/programs/masters-programs/master-science-programs/operations-research-ms", "彭*", "University College Dublin", "Faculty"],
-            ["University of Chicago", "Master of Science in Analytics", "https://voices.uchicago.edu/professional/master-of-science-analytics-full-time/", "李*", "Didi Global Inc.", "Data Analyst"],
-            ["San Diego State University", "Master of Public Health in Epidemiology", "https://publichealth.sdsu.edu/academics/masters/epidemiology", "王*", "Cedars-Sinai Marina del Rey Hospital", "Project Manager"],
-            ["Carnegie Mellon University", "Master of Science in Information Networking (MSIN)", "https://www.cmu.edu/ini/academics/msin/index.html", "张*", "Company in Santa Clara, USA (location-based description)", "Software Engineer"],
-            ["Cornell University", "Master of Engineering in Operations Research and Information Engineering", "https://tech.cornell.edu/programs/masters-programs/master-in-operations-research-and-information-engineering/", "张*", "Himalaya 2. Shopee", "Commercial Strategy Analyst & E-commerce Operations Lead"],
-            ["University of Chicago", "Master of Science in Financial Mathematics", "https://finmath.uchicago.edu/", "王*", "Ernst & Young Global Limited", "Quantitative Advisory Consultant"],
-            ["University of Southern California", "Master of Science in Computer Science", "https://www.cs.usc.edu/academic-programs/masters/", "张*", "Google LLC", "Software Engineer"],
-            ["Carnegie Mellon University", "Master of Science in Electrical and Computer Engineering", "https://www.ece.cmu.edu/academics/ms-ece/index.html", "李*", "R1 RCM Inc.", "Software infrastructure engineer and Machine learning engineer"],
-            ["Northwestern University", "Master of Science in Civil and Environmental Engineering (Structural Engineering)", "https://www.mccormick.northwestern.edu/civil-environmental/academics/masters/structural-engineering-design-specialization/", "杨*", "Goldwind Science & Technology Co., Ltd.", "Offshore Wind Turbine Foundation Structural Engineer"],
-            ["University of California, Berkeley", "Master of Engineering in Industrial Engineering and Operations Research", "https://grad.berkeley.edu/program/industrial-engineering-operations-research-meng/", "陈*", "Amazon.com, Inc.", "Software Development Engineer"],
-            ["University of California, Berkeley", "Master of Engineering in Electrical Engineering and Computer Science", "https://eecs.berkeley.edu/academics/graduate/industry-programs/meng/", "尹*", "Internet technology company (general description)", "Machine Learning Engineer"],
-            ["University of Chicago", "Master of Science in Financial Mathematics", "https://finmath.uchicago.edu/", "J*", "JPMorgan Chase & Co.", "Automated Trading Strategies Analyst"],
-            ["Cornell University", "Master of Engineering in Operations Research and Information Engineering concentration in Applied Operations Research", "https://www.engineering.cornell.edu/orie/meng/", "江*", "Credit Karma, LLC", "Data Scientist"],
-            ["Columbia University", "Master of Science in Computer Science, Software Systems Track", "https://www.cs.columbia.edu/education/ms/softwareSystems/", "王*", "Ping An Property & Casualty Insurance Company of China, Ltd.", "Algorithm Engineer"],
-            ["Delft University of Technology", "Master of Science in Systems and Control", "https://www.tudelft.nl/en/education/programmes/masters/sc/msc-systems-control", "冯*", "ALTEN Nederland", "Technical Software Consultant"],
-            ["Stanford University", "Master of Science in Computer Science", "https://www.cs.stanford.edu/masters-program-overview", "X*", "Leading Fintech company in New York (description-based)", "Software Development Engineer"],
-            ["Cornell University", "Master of Engineering in Operations Research and Information Engineering specialization in Financial Engineering (Ithaca)", "https://www.engineering.cornell.edu/orie/meng/", "金*", "IT consulting company in USA (general description)", "Data Analyst/Data Scientist Consultant"],
-            ["University of Chicago", "Master of Science in Financial Mathematics", "https://finmath.uchicago.edu/", "王*", "Undisclosed mid-size proprietary trading firm in US (description-based)", "Trader"],
-            ["Clemson University", "Master of Science in Industrial Engineering", "https://www.clemson.edu/cecas/departments/ie/academics/graduate/ms.html", "周*", "Wayne State University, Detroit, MI", "Research Assistant"],
-            ["Duke University", "Master of Science in Engineering Management", "https://masters.pratt.duke.edu/management/", "赵*", "Mayo Clinic", "EDF Climate Corp Researcher"],
-            ["New York University", "Master of Science in Financial Engineering", "https://engineering.nyu.edu/academics/programs/financial-engineering-ms", "张*", "Sumitomo Mitsui Banking Corporation", "Model Validation Analyst, Credit Risk"],
-            ["University of California, Los Angeles", "Master of Science in Computer Science", "https://grad.ucla.edu/programs/school-of-engineering-and-applied-science/computer-science/", "叶*", "Expedia Group, Inc.", "Machine Learning Scientist"],
-            ["Carnegie Mellon University", "Master of Science in Electrical and Computer Engineering", "https://www.ece.cmu.edu/academics/ms-ece/index.html", "杨*", "Google LLC", "Software Engineer"],
-            ["University of Chicago", "Master of Science in Financial Mathematics", "https://finmath.uchicago.edu/", "杨*", "CME Group Inc.", "Senior Quantitative Risk Management Associate"],
-            ["Columbia University", "Master of Science in Computer Science, Software Systems Track", "https://www.cs.columbia.edu/education/ms/softwareSystems/", "杨*", "Amazon Lab", "Software Engineer"],
-            ["Rice University", "Master of Computer Science", "https://csweb.rice.edu/academics/graduate-programs/professional-masters-programs", "颜*", "Amazon.com, Inc.", "Software Development Engineer"]
-        ];
-
-        // 全球商科完整数据
-        const businessData = [
-            ["Harvard University", "Master of Business Administration", "https://www.hbs.edu/mba", "张*", "Rystad Energy", "Management Consultant"],
-            ["Massachusetts Institute of Technology", "Master of Finance", "https://mitsloan.mit.edu/mfin/introduce-yourself", "刘*", "香港", "Quant Researcher"],
-            ["Massachusetts Institute of Technology", "Master of Business Administration", "https://mitsloan.mit.edu/mba/admissions", "张*", "United Talent Agency", "Content Analysis Executive"],
-            ["University of Chicago", "Master of Business Administration", "https://www.chicagobooth.edu/mba", "杨*", "AT&T", "Senior Corporate Development"],
-            ["University of Chicago", "Master of Science in Applied Data Science", "https://datascience.uchicago.edu/education/masters-programs/in-person-program/", "韩*", "Glassdoor", "Data Scientist"],
-            ["University of Chicago", "Master of Science in Analytics", "https://voices.uchicago.edu/professional/master-of-science-analytics-full-time/", "李*", "DiDi", "Data Analyst"],
-            ["Columbia University", "Master of Science in Accounting and Fundamental Analysis", "https://academics.business.columbia.edu/msafa", "林*", "China International Capital Corporation (CICC)", "IBD Intern"],
-            ["Columbia University", "Master of Science in Applied Analytics", "https://sps.columbia.edu/academics/masters/applied-analytics", "鲁*", "Tesla", "Lease Accountant"],
-            ["Columbia University", "Master of Science in Business Analytics", "https://ieor.columbia.edu/business-analytics-msba", "陈*", "纽约某投行", "Asset Management"],
-            ["Columbia University", "Master of Science in Applied Analytics", "https://sps.columbia.edu/academics/masters/applied-analytics", "沈*", "AlixPartners", "Consultant"],
-            ["Columbia University", "Master of Science in Applied Analytics", "https://sps.columbia.edu/academics/masters/applied-analytics", "刘*", "Ernst & Young - Parthenon", "Senior Consultant"],
-            ["Columbia University", "Master of Arts in Economics", "https://econ.columbia.edu/masters/", "侯*", "University of Zurich", "Research Assistant"],
-            ["Columbia University", "Master of Science in Accounting and Fundamental Analysis", "https://academics.business.columbia.edu/msafa", "张*", "某私募基金", "Analyst"],
-            ["Columbia University", "Master of Science in Accounting and Fundamental Analysis", "https://academics.business.columbia.edu/msafa", "胡*", "九大投行", "Sales and Trading"],
-            ["Duke University", "Master of Quantitative Management: Risk Track", "https://www.fuqua.duke.edu/programs/mqm-business-analytics/tracks", "黄*", "华盛顿特区某公司", "Data Analyst"],
-            ["Duke University", "Master of Quantitative Management: Risk Track", "https://www.fuqua.duke.edu/programs/mqm-business-analytics/tracks", "陆*", "某信贷公司", "Operations & Risk Management Trainee"],
-            ["Duke University", "Master of Science in Quantitative Financial Economics", "https://gradschool.duke.edu/academics/programs-degrees/quantitative-financial-economics/", "原*", "Ernst & Young", "Manager"],
-            ["Duke University", "Master of Quantitative Management: Business Analytics", "https://www.fuqua.duke.edu/programs/mqm-business-analytics", "俞*", "Dell", "Advisor"],
-            ["Duke University", "Master of Management Studies", "https://www.fuqua.duke.edu/programs/mms", "齐*", "Capital One", "Senior Business Analyst"],
-            ["Duke University", "Master of Quantitative Management: Business Analytics", "https://www.fuqua.duke.edu/programs/mqm-business-analytics", "杨*", "Cadence Design Systems", "Sr. Sales Operations Analyst"],
-            ["Duke University", "Master of Quantitative Management: Business Analytics", "https://www.fuqua.duke.edu/programs/mqm-business-analytics", "晏*", "Intel", "Market Intelligence Analyst"],
-            ["Duke University", "Master of Quantitative Management: Business Analytics", "https://www.fuqua.duke.edu/programs/mqm-business-analytics", "刘*", "Ernst & Young", "IT Consultant"],
-            ["Northwestern University", "Master of Science in Integrated Marketing Communications (IMC)", "https://www.medill.northwestern.edu/imc/", "江*", "美国某公司", "Marketing Analyst"],
-            ["Northwestern University", "Master of Science in Integrated Marketing Communications", "https://www.medill.northwestern.edu/imc/", "郑*", "Uber", "Solution Lead"],
-            ["Northwestern University", "Master of Science in Analytics (MSiA)", "https://www.mccormick.northwestern.edu/machine-learning-data-science/", "陈*", "LinkedIn", "Data Scientist"],
-            ["Johns Hopkins University", "Master of Science in Business Analytics", "https://carey.jhu.edu/programs/master-science-programs/ms-business-analytics-artificial-intelligence", "沙*", "Fannie Mae", "UTA Testing Associate"],
-            ["Johns Hopkins University", "Master of Science in Finance", "https://carey.jhu.edu/programs/master-science-programs/ms-finance-full-time", "汪*", "法国巴黎银行（中国）有限公司", "Analyst"],
-            ["Johns Hopkins University", "Master of Science in Marketing", "https://carey.jhu.edu/programs/master-science-programs/ms-marketing-full-time", "罗*", "Lexus China", "Marketing Associate"],
-            ["Johns Hopkins University", "Master of Business Administration - Information Systems", "https://carey.jhu.edu/programs/master-science-programs/ms-information-systems-artificial-intelligence", "王*", "CWP Consulting, LLC", "Business Consultant"],
-            ["Johns Hopkins University", "Master of Arts in International Economics and Finance", "https://sais.jhu.edu/academics/degree-programs/master-degrees/master-international-economics-and-finance-mief", "林*", "World Bank Group", "Consultant"],
-            ["Cornell University", "Master of Professional Studies in Management - Accounting Specialization", "https://www.johnson.cornell.edu/programs/specialized-masters/mps-in-management-accounting-specialization/", "冯*", "Deloitte China", "Accounting"],
-            ["Cornell University", "Master of Management in Hospitality", "https://sha.cornell.edu/admissions-programs/graduate/mmh/", "周*", "Boston Consulting Group (BCG)", "Consultant"],
-            ["Cornell University", "Master of Professional Studies in Applied Economics and Management", "https://dyson.cornell.edu/programs/graduate/mps/", "钟*", "HSBC Bank (Ningbo Branch)", "Assistant to General Manager"],
-            ["Cornell University", "Master of Professional Studies in Management", "https://www.johnson.cornell.edu/programs/specialized-masters/mps-in-management/", "谢*", "DotHouse Health", "HR Analyst"],
-            ["Cornell University", "Master of Management in Hospitality", "https://sha.cornell.edu/admissions-programs/graduate/mmh/", "严*", "Westmont Hospitality Group", "Associate, Asset Management"],
-            ["University of California, Los Angeles", "Master of Science in Business Analytics", "https://www.anderson.ucla.edu/degrees/master-of-science-in-business-analytics-msba", "施*", "ZS Associates", "Decision Analytics Associate"],
-            ["University of California, Los Angeles", "Master of Science in Business Analytics", "https://www.anderson.ucla.edu/degrees/master-of-science-in-business-analytics-msba", "邱*", "Livongo Health", "Data Analyst/Scientist"],
-            ["University of California, Los Angeles", "Master of Quantitative Economics", "https://master.econ.ucla.edu/", "程*", "Silverhorn Group", "Investment Analyst"],
-            ["University of Michigan at Ann Arbor", "Master of Science in Information", "https://www.si.umich.edu/programs/master-science-information", "赵*", "Deloitte Insight Studio; Beijing Youth Daily", "UX Designer; Journalist"],
-            ["Carnegie Mellon University", "Master of Science in Business Analytics", "https://www.cmu.edu/tepper/programs/master-business-analytics/full-time/index.html", "程*", "国内某互联网公司", "Data Analyst"],
-            ["Carnegie Mellon University", "Master of Information Systems Management - Business Intelligence & Data Analytics", "https://www.heinz.cmu.edu/programs/information-systems-management-mism/", "周*", "FedEx", "Data Engineer"],
-            ["Emory University", "Master of Science in Business Analytics", "https://goizueta.emory.edu/msba", "曹*", "Credit Karma", "Senior Analyst II"],
-            ["University of Southern California", "Master of Accounting", "https://www.marshall.usc.edu/programs/graduate-programs/accounting-masters/master-of-accounting", "何*", "BPM LLP", "Audit Senior"],
-            ["University of Southern California", "Master of Science in Business Analytics", "https://www.marshall.usc.edu/programs/graduate-programs/specialized-masters-programs/master-science-business-analytics", "窦*", "Farmers Insurance; Magiclytics", "Data Analyst; Social Media Data Analyst"],
-            ["University of Southern California", "Master of Science in Business Analytics", "https://www.marshall.usc.edu/programs/graduate-programs/specialized-masters-programs/master-science-business-analytics", "赵*", "Lionsgate Entertainment", "Business Intelligence Analyst"],
-            ["New York University", "Master of Arts in Economics", "https://as.nyu.edu/departments/econ/graduate/ma.html", "杨*", "香港某买方公司", "Macro Multi-Asset & Bitcoin Associate"],
-            ["New York University", "Master of Science in Project Management", "https://www.sps.nyu.edu/homepage/academics/masters-degrees/ms-in-project-management.html", "刘*", "PetroChina", "N/A"],
-            ["New York University", "Master of Science in Integrated Marketing", "https://www.sps.nyu.edu/homepage/academics/masters-degrees/ms-in-integrated-marketing.html", "李*", "Illuminera Consulting", "Strategy Consultant"],
-            ["New York University", "Master of Science in Integrated Marketing", "https://www.sps.nyu.edu/homepage/academics/masters-degrees/ms-in-integrated-marketing.html", "李*", "BIM International Services; JPMorgan Chase", "Co-founder; Teller"],
-            ["Georgia Institute of Technology", "Master of Science in Supply Chain Engineering", "https://www.isye.gatech.edu/academics/masters/degrees/ms-supply-chain-engineering", "秘*", "Tesla", "Global Supply Analyst"],
-            ["University of Texas at Austin", "Master of Science in Business Analytics", "https://www.mccombs.utexas.edu/graduate/specialized-masters/ms-business-analytics/", "屠*", "Indeed", "Product Scientist"],
-            ["Boston College", "Master of Science in Finance", "https://www.bc.edu/bc-web/schools/carroll-school/graduate/ms-programs/ms-in-finance.html", "丁*", "Brown Brothers Harriman", "Operations Specialist"],
-            ["University of Wisconsin–Madison", "Master of Accountancy", "https://business.wisc.edu/graduate/masters/accountancy/", "吴*", "JPMorgan Chase", "Reconciliation Specialist"],
-            ["Boston University", "Master of Arts in Advertising", "https://www.bu.edu/com/academics/advertising/ms-in-advertising/", "王*", "国内某新媒体公司", "New Media Position"],
-            ["Boston University", "Master of Science in Financial Mathematics", "https://www.bu.edu/questrom/graduate-programs/specialty-masters-programs/ms-in-mathematical-finance-and-financial-technology/", "张*", "Adaptive Investment Solutions, LLC", "Quant Analyst"],
-            ["University of Rochester", "Master of Science in Marketing Analytics", "https://simon.rochester.edu/programs/full-time-ms-in-marketing-analytics", "李*", "罗切斯特某企业", "Data Warehousing Developer"],
-            ["University of Rochester", "Master of Science in Marketing Analytics", "https://simon.rochester.edu/programs/full-time-ms-in-marketing-analytics", "王*", "Hertz", "Revenue Management Analyst"],
-            ["University of Rochester", "Master of Science in Marketing Analytics", "https://simon.rochester.edu/programs/full-time-ms-in-marketing-analytics", "李*", "Moran Group", "Search Engine Marketing Specialist"],
-            ["University of Rochester", "Master of Science in Marketing Analytics", "https://simon.rochester.edu/programs/full-time-ms-in-marketing-analytics", "张*", "Zeno Group", "Research & Analytics"],
-            ["University of Rochester", "Master of Science in Finance", "https://simon.rochester.edu/programs/full-time-ms-in-finance", "张*", "PepsiCo", "Financial Analyst"],
-            ["University of Rochester", "Master of Science in Finance", "https://simon.rochester.edu/programs/full-time-ms-in-finance", "许*", "Google", "Senior Data Analyst"],
-            ["Wake Forest University", "Master of Science in Business Analytics", "https://business.wfu.edu/masters-in-business-analytics/", "杨*", "Amazon Web Services", "Data Engineer"],
-            ["Brandeis University", "Master of Science in Finance", "https://www.brandeis.edu/global/academics/msf/index.html", "张*", "DoorDash", "Finance & Strategy Associate"],
-            ["Fordham University", "Master of Science in Quantitative Finance", "https://www.fordham.edu/gabelli-school-of-business/academic-programs-and-admissions/graduate-programs/academic-programs/ms-programs/quantitative-finance/", "尹*", "GSR", "Quantitative Analyst"],
-            ["Imperial College London", "Master of Science in Finance and Accounting", "https://www.imperial.ac.uk/business-school/masters/finance-accounting/", "马*", "PwC Consulting (Beijing)", "M&A Transaction Services Consultant"],
-            ["University of Cambridge", "Master of Philosophy in Management", "https://www.jbs.cam.ac.uk/masters-degrees/mphil-management/", "陈*", "DHL Consulting", "Senior Consultant"],
-            ["University of Cambridge", "Master of Philosophy in Finance and Economics", "https://www.postgraduate.study.cam.ac.uk/courses/directory/ececmpmfe", "张*", "HSBC China", "Fixed Income Trader"],
-            ["University of British Columbia", "Master of Business Analytics", "https://www.sauder.ubc.ca/programs/masters-degrees/mban", "张*", "Brex", "Operations Analyst"]
-        ];
-
-        // 每页显示的行数
-        const rowsPerPage = 10;
-
-        // 标签页切换功能
+<h1><i class="fas fa-graduation-cap" style="margin-right: 8px; color: #2D8F97;"></i>棕榈大道硕博毕业生职业发展追踪</h1>
+</div>
+<div class="tabs">
+<div class="tab active" data-tab="global-humanities">
+<i class="fas fa-book-open"></i> 全球人文社科
+            </div>
+<div class="tab" data-tab="global-stem">
+<i class="fas fa-microscope"></i> 全球理工科
+            </div>
+<div class="tab" data-tab="global-business">
+<i class="fas fa-chart-line"></i> 全球商科
+            </div>
+</div>
+<!-- 全球人文社科 -->
+<div class="tab-content active" id="global-humanities">
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>毕业院校</th>
+<th>毕业项目</th>
+<th>毕业项目链接</th>
+<th>毕业生化名</th>
+<th>就职单位</th>
+<th>就职岗位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="毕业院校">Harvard University</td>
+<td data-label="毕业项目">Master in Public Administration in International Development</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.hks.harvard.edu/educational-programs/masters-programs/master-public-administration-international-development" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">World Bank Group</td>
+<td data-label="就职岗位">Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Harvard University</td>
+<td data-label="毕业项目">Master of Laws</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://hls.harvard.edu/graduate-program/ll-m-program/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">马*</td>
+<td data-label="就职单位">Harvard Law School</td>
+<td data-label="就职岗位">Research Assistant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Harvard University</td>
+<td data-label="毕业项目">Master of Public Health</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://hsph.harvard.edu/program-finder/?pf_degree_type=masters-degrees" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">N*</td>
+<td data-label="就职单位">United Nations Women</td>
+<td data-label="就职岗位">Data Analyst &amp; Monitoring Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Architecture</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.arch.columbia.edu/programs/1-master-of-architecture" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">郝*</td>
+<td data-label="就职单位">Rocky Mountain Institute (RMI)</td>
+<td data-label="就职岗位">Principal</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Arts in Comparative and International Education</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.tc.columbia.edu/international-and-transcultural-studies/international-and-comparative-education/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">林*</td>
+<td data-label="就职单位">美国湾区某线上教育公司</td>
+<td data-label="就职岗位">课程设计</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Arts in Quantitative Methods in the Social Sciences</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://stat.columbia.edu/masters-programs/ma-quantitative-methods-social-sciences/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">刘*</td>
+<td data-label="就职单位">Aon</td>
+<td data-label="就职岗位">Health Analytics Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Arts in Social Organizational Psychology</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.tc.columbia.edu/organization-and-leadership/social-organizational-psychology/degrees--requirements/social-organizational-psychology-ma/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">俞*</td>
+<td data-label="就职单位">Retensa LLC</td>
+<td data-label="就职岗位">Talent Management Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Public Administration</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.sipa.columbia.edu/sipa-education/masters-programs/master-public-administration" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">Bank of Ningbo Suzhou Branch</td>
+<td data-label="就职岗位">资产托管部产品经理</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Public Administration</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://sipa.columbia.edu/academics/programs/master-public-administration" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">崔*</td>
+<td data-label="就职单位">Industrial and Commercial Bank of China, New York Branch</td>
+<td data-label="就职岗位">Associate, Corporate Strategy and Research</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Public Administration in International Finance and Economic Policy</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://bulletin.columbia.edu/sipa/concentrations/ifep/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">陈*</td>
+<td data-label="就职单位">World Bank Group</td>
+<td data-label="就职岗位">Cloud Program Management Office Data Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Social Work</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://socialwork.columbia.edu/content/mssw-program" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">李*</td>
+<td data-label="就职单位">CAIPA (Chinese American Independent Practice Association)</td>
+<td data-label="就职岗位">分析师</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Social Work</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://socialwork.columbia.edu/content/mssw-program" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">徐*</td>
+<td data-label="就职单位">World Bank Group</td>
+<td data-label="就职岗位">Data Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Pennsylvania</td>
+<td data-label="毕业项目">Master of Science in Social Policy &amp; Data Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://catalog.upenn.edu/graduate/programs/social-policy-data-analytics-mssp/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">ThinkTank Health Development Research Center</td>
+<td data-label="就职岗位">Project Manager Assistant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Duke University</td>
+<td data-label="毕业项目">Master of Arts in Political Science</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://polisci.duke.edu/graduate/ma" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">郭*</td>
+<td data-label="就职单位">New York University</td>
+<td data-label="就职岗位">Research Assistant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Northwestern University</td>
+<td data-label="毕业项目">Master of Laws</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.law.northwestern.edu/academics/degree-programs/llms/llm/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">洪*</td>
+<td data-label="就职单位">北京植德律师事务所</td>
+<td data-label="就职岗位">律师</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Northwestern University</td>
+<td data-label="毕业项目">Master of Science in Communication</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://msc.northwestern.edu/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">何*</td>
+<td data-label="就职单位">Valeo VLS North America R&amp;D Center</td>
+<td data-label="就职岗位">North America Patent Site Coordinator</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Johns Hopkins University</td>
+<td data-label="毕业项目">Master of Business Administration - Information Systems Concentration</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://carey.jhu.edu/programs/master-science-programs/ms-information-systems-artificial-intelligence" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">王*</td>
+<td data-label="就职单位">CWP Consulting, LLC</td>
+<td data-label="就职岗位">Business Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Vanderbilt University</td>
+<td data-label="毕业项目">Master of Education in Child Studies</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://peabody.vanderbilt.edu/academics/masters-programs/child-studies-med/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">王*</td>
+<td data-label="就职单位">University of Georgia</td>
+<td data-label="就职岗位">博士</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Vanderbilt University</td>
+<td data-label="毕业项目">Master of Education in Human Development Studies</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://peabody.vanderbilt.edu/academics/masters-programs/human-development-counseling-med/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">徐*</td>
+<td data-label="就职单位">Center for Counseling and Community Wellbeing</td>
+<td data-label="就职岗位">Doctoral Clinical Extern</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Vanderbilt University</td>
+<td data-label="毕业项目">Master of Laws</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://law.vanderbilt.edu/llm-program/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">杜*</td>
+<td data-label="就职单位">Southern Environmental Law Center</td>
+<td data-label="就职岗位">Research Assistant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">New York University</td>
+<td data-label="毕业项目">Master of Arts in Cinema Studies</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://tisch.nyu.edu/cinema-studies/courses/ma-in-cinema-studies.html" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">彭*</td>
+<td data-label="就职单位">IVIDEA Studio (青藤文化)</td>
+<td data-label="就职岗位">Chief Executive Director, Cinematographer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">New York University</td>
+<td data-label="毕业项目">Master of Arts in International Politics and Business</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.stern.nyu.edu" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">王*</td>
+<td data-label="就职单位">New York University China-US Relations Research Center</td>
+<td data-label="就职岗位">助理研究员</td>
+</tr>
+<tr>
+<td data-label="毕业院校">New York University</td>
+<td data-label="毕业项目">Master of Arts in Media, Culture and Communication</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://steinhardt.nyu.edu/degree/ma-media-culture-and-communication" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">方*</td>
+<td data-label="就职单位">Meal Subscription &amp; Restaurant</td>
+<td data-label="就职岗位">Co-founder</td>
+</tr>
+<tr>
+<td data-label="毕业院校">New York University</td>
+<td data-label="毕业项目">Master of Arts in Teaching English to Speakers of Other Languages</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://steinhardt.nyu.edu/degree/ma-teaching-english-speakers-other-languages-non-certification" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">曾*</td>
+<td data-label="就职单位">某英语教育机构</td>
+<td data-label="就职岗位">英语教学相关</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Southern California</td>
+<td data-label="毕业项目">Master of Communication Management</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://annenberg.usc.edu/academics/communication-mcm" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">浦*</td>
+<td data-label="就职单位">NBA China</td>
+<td data-label="就职岗位">Management Trainee</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Southern California</td>
+<td data-label="毕业项目">Master of Communication Management</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://annenberg.usc.edu/academics/communication-mcm" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">徐*</td>
+<td data-label="就职单位">某500强企业</td>
+<td data-label="就职岗位">部门经理</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Southern California</td>
+<td data-label="毕业项目">Master of Science in Communication Data Science</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://annenberg.usc.edu/academics/communication-data-science-ms" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">马*</td>
+<td data-label="就职单位">Apple</td>
+<td data-label="就职岗位">Software Engineer Data Scientist</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Carnegie Mellon University</td>
+<td data-label="毕业项目">Master of Science in Language Technologies</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://lti.cmu.edu/academics/masters-programs/mlt.html" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">许*</td>
+<td data-label="就职单位">Affirm, Inc.</td>
+<td data-label="就职岗位">Data Scientist</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Rutgers University–New Brunswick</td>
+<td data-label="毕业项目">Master of City and Regional Planning</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://bloustein.rutgers.edu/graduate/uppd/mcrp/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">罗*</td>
+<td data-label="就职单位">Ferrandino &amp; Associates</td>
+<td data-label="就职岗位">城市规划师</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Connecticut</td>
+<td data-label="毕业项目">Master of Arts in Sociology</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://catalog.uconn.edu/graduate/degree-programs/sociology-ma-phd/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">蒲*</td>
+<td data-label="就职单位">University of Connecticut</td>
+<td data-label="就职岗位">Dissertation Researcher; Instructor of Sociology</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Cambridge</td>
+<td data-label="毕业项目">Master of Philosophy in Asian &amp; Middle Eastern Studies</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.ames.cam.ac.uk/postgraduates/prospective-masters-students/masters-middle-eastern-studies" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">颜*</td>
+<td data-label="就职单位">CapchainX</td>
+<td data-label="就职岗位">Business Development Manager</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Oxford</td>
+<td data-label="毕业项目">Master of Philosophy in Greek and/or Latin Languages and Literature</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.ox.ac.uk/admissions/graduate/courses/mphil-greek-andor-latin-languages-and-literature" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">陈*</td>
+<td data-label="就职单位">University of Oxford</td>
+<td data-label="就职岗位">博士</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Nanyang Technological University</td>
+<td data-label="毕业项目">Master of Science in Marketing Science</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.ntu.edu.sg/business/admissions/graduate-studies/msc-marketing-science/home" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">何*</td>
+<td data-label="就职单位">HSBC Hong Kong</td>
+<td data-label="就职岗位">Commercial Banking Assistant Manager</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Southampton</td>
+<td data-label="毕业项目">Master of Public Administration</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.southampton.ac.uk/courses/public-administration-masters-mpa" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">李*</td>
+<td data-label="就职单位">某国企</td>
+<td data-label="就职岗位">未透露</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- 全球理工科 -->
+<div class="tab-content" id="global-stem">
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>毕业院校</th>
+<th>毕业项目</th>
+<th>毕业项目链接</th>
+<th>毕业生化名</th>
+<th>就职单位</th>
+<th>就职岗位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="毕业院校">Harvard University</td>
+<td data-label="毕业项目">Master of Public Health in Epidemiology</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://hsph.harvard.edu/program/mph-epidemiology/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">Various startups (participated in 8 startups during master's)</td>
+<td data-label="就职岗位">Partner</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Stanford University</td>
+<td data-label="毕业项目">Master of Science in Electrical Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://ee.stanford.edu/current-ms" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">邓*</td>
+<td data-label="就职单位">ETH Zurich</td>
+<td data-label="就职岗位">Doctor of Philosophy in Information Technology and Electrical Engineering</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Stanford University</td>
+<td data-label="毕业项目">Master of Science in Electrical Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://ee.stanford.edu/current-ms" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">李*</td>
+<td data-label="就职单位">Meta Platforms, Inc.</td>
+<td data-label="就职岗位">Machine Learning Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Stanford University</td>
+<td data-label="毕业项目">Doctor of Philosophy in Computer Science</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://cs.stanford.edu/admissions/phd" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">曾*</td>
+<td data-label="就职单位">Stanford University</td>
+<td data-label="就职岗位">Doctor of Philosophy in Electrical Engineering</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Stanford University</td>
+<td data-label="毕业项目">Master of Science in Civil and Environmental Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://cee.stanford.edu/academics-admission/graduate-degrees/ms-programs" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">汤*</td>
+<td data-label="就职单位">Water Group</td>
+<td data-label="就职岗位">Civil Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Stanford University</td>
+<td data-label="毕业项目">Master of Science in Computer Science</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.cs.stanford.edu/masters-program-overview" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">X*</td>
+<td data-label="就职单位">Leading Fintech company in New York (description-based)</td>
+<td data-label="就职岗位">Software Development Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Chicago</td>
+<td data-label="毕业项目">Master of Science in Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://voices.uchicago.edu/professional/master-of-science-analytics-full-time/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">李*</td>
+<td data-label="就职单位">Didi Global Inc.</td>
+<td data-label="就职岗位">Data Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Chicago</td>
+<td data-label="毕业项目">Master of Science in Financial Mathematics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://finmath.uchicago.edu/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">王*</td>
+<td data-label="就职单位">Ernst &amp; Young Global Limited</td>
+<td data-label="就职岗位">Quantitative Advisory Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Chicago</td>
+<td data-label="毕业项目">Master of Science in Financial Mathematics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://finmath.uchicago.edu/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">J*</td>
+<td data-label="就职单位">JPMorgan Chase &amp; Co.</td>
+<td data-label="就职岗位">Automated Trading Strategies Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Chicago</td>
+<td data-label="毕业项目">Master of Science in Financial Mathematics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://finmath.uchicago.edu/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">王*</td>
+<td data-label="就职单位">Undisclosed mid-size proprietary trading firm in US (description-based)</td>
+<td data-label="就职岗位">Trader</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Chicago</td>
+<td data-label="毕业项目">Master of Science in Financial Mathematics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://finmath.uchicago.edu/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">杨*</td>
+<td data-label="就职单位">CME Group Inc.</td>
+<td data-label="就职岗位">Senior Quantitative Risk Management Associate</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Johns Hopkins University</td>
+<td data-label="毕业项目">Master of Science in Biomedical Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.bme.jhu.edu/academics/graduate/masters-programs/masters-program/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">朱*</td>
+<td data-label="就职单位">Johns Hopkins University</td>
+<td data-label="就职岗位">Doctor of Philosophy in Electrical Engineering</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Pennsylvania</td>
+<td data-label="毕业项目">Master of Computer and Information Technology</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.cis.upenn.edu/graduate/program-offerings/master-of-computer-and-information-technology/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">王*</td>
+<td data-label="就职单位">Microsoft Corporation</td>
+<td data-label="就职岗位">Software Engineer II</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Duke University</td>
+<td data-label="毕业项目">Master of Engineering in Electrical and Computer Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://ece.duke.edu/academics/masters/meng/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">周*</td>
+<td data-label="就职单位">Intel Corporation</td>
+<td data-label="就职岗位">Machine Learning Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Duke University</td>
+<td data-label="毕业项目">Master of Science in Engineering Management</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://masters.pratt.duke.edu/management/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">赵*</td>
+<td data-label="就职单位">Mayo Clinic</td>
+<td data-label="就职岗位">EDF Climate Corp Researcher</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Northwestern University</td>
+<td data-label="毕业项目">Master of Science in Civil and Environmental Engineering (Structural Engineering)</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.mccormick.northwestern.edu/civil-environmental/academics/masters/structural-engineering-design-specialization/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">杨*</td>
+<td data-label="就职单位">Goldwind Science &amp; Technology Co., Ltd.</td>
+<td data-label="就职岗位">Offshore Wind Turbine Foundation Structural Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Science in Electrical Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.ee.columbia.edu/ms-program-ee" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">舒*</td>
+<td data-label="就职单位">Undisclosed US tech startup (company name not provided)</td>
+<td data-label="就职岗位">ML Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Science in Operations Research</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.engineering.columbia.edu/academics/programs/masters-programs/master-science-programs/operations-research-ms" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">彭*</td>
+<td data-label="就职单位">University College Dublin</td>
+<td data-label="就职岗位">Faculty</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Science in Computer Science, Software Systems Track</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.cs.columbia.edu/education/ms/softwareSystems/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">王*</td>
+<td data-label="就职单位">Ping An Property &amp; Casualty Insurance Company of China, Ltd.</td>
+<td data-label="就职岗位">Algorithm Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Science in Computer Science, Software Systems Track</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.cs.columbia.edu/education/ms/softwareSystems/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">杨*</td>
+<td data-label="就职单位">Amazon Lab</td>
+<td data-label="就职岗位">Software Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Cornell University</td>
+<td data-label="毕业项目">Master of Professional Studies in Information Science</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://infosci.cornell.edu/masters/mps" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">陈*</td>
+<td data-label="就职单位"></td>
+<td data-label="就职岗位">Internet job hunting</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Cornell University</td>
+<td data-label="毕业项目">Master of Engineering in Electrical and Computer Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.ece.cornell.edu/ece/programs/graduate-programs/meng-program/meng-admissions-and-applying" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">郭*</td>
+<td data-label="就职单位">Huawei Technologies Co., Ltd.</td>
+<td data-label="就职岗位">Hardware direction</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Cornell University</td>
+<td data-label="毕业项目">Master of Engineering in Environmental Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.engineering.cornell.edu/cee/civil-environmental-engineering-meng/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">高*</td>
+<td data-label="就职单位">Environmental Research Assistant</td>
+<td data-label="就职岗位">R&amp;D position</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Cornell University</td>
+<td data-label="毕业项目">Master of Engineering in Operations Research and Information Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://tech.cornell.edu/programs/masters-programs/master-in-operations-research-and-information-engineering/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">Himalaya 2. Shopee</td>
+<td data-label="就职岗位">Commercial Strategy Analyst &amp; E-commerce Operations Lead</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Cornell University</td>
+<td data-label="毕业项目">Master of Engineering in Operations Research and Information Engineering concentration in Applied Operations Research</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.engineering.cornell.edu/orie/meng/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">江*</td>
+<td data-label="就职单位">Credit Karma, LLC</td>
+<td data-label="就职岗位">Data Scientist</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Cornell University</td>
+<td data-label="毕业项目">Master of Engineering in Operations Research and Information Engineering specialization in Financial Engineering (Ithaca)</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.engineering.cornell.edu/orie/meng/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">金*</td>
+<td data-label="就职单位">IT consulting company in USA (general description)</td>
+<td data-label="就职岗位">Data Analyst/Data Scientist Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of California, Berkeley</td>
+<td data-label="毕业项目">Master of Financial Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://mfe.haas.berkeley.edu/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">严*</td>
+<td data-label="就职单位">CornerCap Investment Counsel</td>
+<td data-label="就职岗位">Quantitative Research Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of California, Berkeley</td>
+<td data-label="毕业项目">Master of Engineering in Industrial Engineering and Operations Research</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://grad.berkeley.edu/program/industrial-engineering-operations-research-meng/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">陈*</td>
+<td data-label="就职单位">Amazon.com, Inc.</td>
+<td data-label="就职岗位">Software Development Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of California, Berkeley</td>
+<td data-label="毕业项目">Master of Engineering in Electrical Engineering and Computer Science</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://eecs.berkeley.edu/academics/graduate/industry-programs/meng/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">尹*</td>
+<td data-label="就职单位">Internet technology company (general description)</td>
+<td data-label="就职岗位">Machine Learning Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of California, Los Angeles</td>
+<td data-label="毕业项目">Master of Science in Electrical Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://grad.ucla.edu/programs/school-of-engineering-and-applied-science/electrical-computer-engineering/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">郭*</td>
+<td data-label="就职单位">ByteDance Ltd.</td>
+<td data-label="就职岗位">算法工程师</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of California, Los Angeles</td>
+<td data-label="毕业项目">Master of Science in Computer Science</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://grad.ucla.edu/programs/school-of-engineering-and-applied-science/computer-science/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">叶*</td>
+<td data-label="就职单位">Expedia Group, Inc.</td>
+<td data-label="就职岗位">Machine Learning Scientist</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Rice University</td>
+<td data-label="毕业项目">Master of Computer Science</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://csweb.rice.edu/academics/graduate-programs/professional-masters-programs" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">颜*</td>
+<td data-label="就职单位">Amazon.com, Inc.</td>
+<td data-label="就职岗位">Software Development Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Vanderbilt University</td>
+<td data-label="毕业项目">Master of Science in Electrical Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://engineering.vanderbilt.edu/departments/electrical-computer-engineering/graduate-programs/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">闫*</td>
+<td data-label="就职单位">ZTE Corporation USA</td>
+<td data-label="就职岗位">Software Quality Assurance Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Michigan</td>
+<td data-label="毕业项目">Doctor of Philosophy in Robotics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://robotics.umich.edu/academic-program/admissions-info/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">王*</td>
+<td data-label="就职单位">某美国大学</td>
+<td data-label="就职岗位">Faculty</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Carnegie Mellon University</td>
+<td data-label="毕业项目">Master of Science in Electrical and Computer Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.ece.cmu.edu/academics/ms-ece/index.html" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">麻*</td>
+<td data-label="就职单位">Oracle Corporation</td>
+<td data-label="就职岗位">Machine Learning Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Carnegie Mellon University</td>
+<td data-label="毕业项目">Master of Science in Electrical and Computer Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.ece.cmu.edu/academics/ms-ece/index.html" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">李*</td>
+<td data-label="就职单位">Google LLC</td>
+<td data-label="就职岗位">Software Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Carnegie Mellon University</td>
+<td data-label="毕业项目">Master of Information Systems Management</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.heinz.cmu.edu/programs/information-systems-management-master/16-month" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">高*</td>
+<td data-label="就职单位"></td>
+<td data-label="就职岗位">Job searching</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Carnegie Mellon University</td>
+<td data-label="毕业项目">Master of Science in Information Networking (MSIN)</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.cmu.edu/ini/academics/msin/index.html" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">Company in Santa Clara, USA (location-based description)</td>
+<td data-label="就职岗位">Software Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Carnegie Mellon University</td>
+<td data-label="毕业项目">Master of Science in Electrical and Computer Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.ece.cmu.edu/academics/ms-ece/index.html" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">李*</td>
+<td data-label="就职单位">R1 RCM Inc.</td>
+<td data-label="就职岗位">Software infrastructure engineer and Machine learning engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Carnegie Mellon University</td>
+<td data-label="毕业项目">Master of Science in Electrical and Computer Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.ece.cmu.edu/academics/ms-ece/index.html" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">杨*</td>
+<td data-label="就职单位">Google LLC</td>
+<td data-label="就职岗位">Software Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Georgia Institute of Technology</td>
+<td data-label="毕业项目">Master of Science in Electrical and Computer Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://ece.gatech.edu/graduate/masters-degrees" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">樊*</td>
+<td data-label="就职单位">Texas Instruments</td>
+<td data-label="就职岗位">Circuit Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">New York University</td>
+<td data-label="毕业项目">Master of Science in Computer Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://engineering.nyu.edu/academics/programs/computer-engineering-ms" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">庄*</td>
+<td data-label="就职单位">State-owned Enterprise</td>
+<td data-label="就职岗位">国企AI大模型方向做技术开发</td>
+</tr>
+<tr>
+<td data-label="毕业院校">New York University</td>
+<td data-label="毕业项目">Master of Science in Computer Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://engineering.nyu.edu/academics/programs/computer-engineering-ms" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">陈*</td>
+<td data-label="就职单位">United Nations related project</td>
+<td data-label="就职岗位">未透露</td>
+</tr>
+<tr>
+<td data-label="毕业院校">New York University</td>
+<td data-label="毕业项目">Master of Science in Data Science</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://cds.nyu.edu/admissions/masters-in-data-science-overview/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">李*</td>
+<td data-label="就职单位">New York University Langone Medical Center</td>
+<td data-label="就职岗位">Data Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">New York University</td>
+<td data-label="毕业项目">Master of Science in Data Science</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://cds.nyu.edu/admissions/masters-in-data-science-overview/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">郭*</td>
+<td data-label="就职单位">Capital One Financial Corporation</td>
+<td data-label="就职岗位">Senior Machine Learning Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">New York University</td>
+<td data-label="毕业项目">Master of Science in Financial Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://engineering.nyu.edu/academics/programs/financial-engineering-ms" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">Sumitomo Mitsui Banking Corporation</td>
+<td data-label="就职岗位">Model Validation Analyst, Credit Risk</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Oklahoma State University</td>
+<td data-label="毕业项目">Master of Science in Animal Science</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://go.okstate.edu/graduate-academics/programs/masters/animal-science-ms.html" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">胡*</td>
+<td data-label="就职单位">Oklahoma State University</td>
+<td data-label="就职岗位">Doctor of Philosophy in Animal Science</td>
+</tr>
+<tr>
+<td data-label="毕业院校">San Diego State University</td>
+<td data-label="毕业项目">Master of Public Health in Epidemiology</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://publichealth.sdsu.edu/academics/masters/epidemiology" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">王*</td>
+<td data-label="就职单位">Cedars-Sinai Marina del Rey Hospital</td>
+<td data-label="就职岗位">Project Manager</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of California, Irvine</td>
+<td data-label="毕业项目">Master of Conservation and Restoration Science</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://mcrs.bio.uci.edu/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">谢*</td>
+<td data-label="就职单位"></td>
+<td data-label="就职岗位">Niche major, job hunting</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of California, San Diego</td>
+<td data-label="毕业项目">Master of Science in Data Science</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://datascience.ucsd.edu/graduate/ms-program/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">叶*</td>
+<td data-label="就职单位"></td>
+<td data-label="就职岗位">Job hunting</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of California, San Diego</td>
+<td data-label="毕业项目">Master of Science in Mechanical Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="http://maeweb.ucsd.edu/grad/ms" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">刘*</td>
+<td data-label="就职单位">Embodied Intelligence Startup</td>
+<td data-label="就职岗位">R&amp;D position</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of California, San Diego</td>
+<td data-label="毕业项目">Master of Science in Electrical and Computer Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.ece.ucsd.edu/graduate/graduate-admissions" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">叶*</td>
+<td data-label="就职单位">Amazon.com, Inc.</td>
+<td data-label="就职岗位">Software Development Engineer (SDE)</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Florida</td>
+<td data-label="毕业项目">Master of Science in Electrical and Computer Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.eng.ufl.edu/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">杨*</td>
+<td data-label="就职单位">University of Florida</td>
+<td data-label="就职岗位">Doctor of Philosophy in Electrical Engineering</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of North Carolina at Chapel Hill</td>
+<td data-label="毕业项目">Master of Science in Biostatistics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://sph.unc.edu/bios/ms/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">何*</td>
+<td data-label="就职单位">University of Waterloo</td>
+<td data-label="就职岗位">PhD in Biostats</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Southern California</td>
+<td data-label="毕业项目">Master of Science in Translational Biotechnology</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://dtg.usc.edu/site/index.php/biotechnology/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">孙*</td>
+<td data-label="就职单位">University of Southern California</td>
+<td data-label="就职岗位">Doctor of Philosophy in Biomedical and Biological Sciences</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Southern California</td>
+<td data-label="毕业项目">Master of Science in Computer Science</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.cs.usc.edu/academic-programs/masters/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">Google LLC</td>
+<td data-label="就职岗位">Software Engineer</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- 全球商科 -->
+<div class="tab-content" id="global-business">
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>毕业院校</th>
+<th>毕业项目</th>
+<th>毕业项目链接</th>
+<th>毕业生化名</th>
+<th>就职单位</th>
+<th>就职岗位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="毕业院校">Harvard University</td>
+<td data-label="毕业项目">Master of Business Administration</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.hbs.edu/mba" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">Rystad Energy</td>
+<td data-label="就职岗位">Management Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Massachusetts Institute of Technology</td>
+<td data-label="毕业项目">Master of Finance</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://mitsloan.mit.edu/mfin/introduce-yourself" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">刘*</td>
+<td data-label="就职单位">香港</td>
+<td data-label="就职岗位">Quant Researcher</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Massachusetts Institute of Technology</td>
+<td data-label="毕业项目">Master of Business Administration</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://mitsloan.mit.edu/mba/admissions" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">United Talent Agency</td>
+<td data-label="就职岗位">Content Analysis Executive</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Chicago</td>
+<td data-label="毕业项目">Master of Business Administration</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.chicagobooth.edu/mba" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">杨*</td>
+<td data-label="就职单位">AT&amp;T</td>
+<td data-label="就职岗位">Senior Corporate Development</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Chicago</td>
+<td data-label="毕业项目">Master of Science in Applied Data Science</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://datascience.uchicago.edu/education/masters-programs/in-person-program/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">韩*</td>
+<td data-label="就职单位">Glassdoor</td>
+<td data-label="就职岗位">Data Scientist</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Chicago</td>
+<td data-label="毕业项目">Master of Science in Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://voices.uchicago.edu/professional/master-of-science-analytics-full-time/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">李*</td>
+<td data-label="就职单位">DiDi</td>
+<td data-label="就职岗位">Data Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Science in Accounting and Fundamental Analysis</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://academics.business.columbia.edu/msafa" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">林*</td>
+<td data-label="就职单位">China International Capital Corporation (CICC)</td>
+<td data-label="就职岗位">IBD Intern</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Science in Applied Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://sps.columbia.edu/academics/masters/applied-analytics" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">鲁*</td>
+<td data-label="就职单位">Tesla</td>
+<td data-label="就职岗位">Lease Accountant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Science in Business Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://ieor.columbia.edu/business-analytics-msba" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">陈*</td>
+<td data-label="就职单位">纽约某投行</td>
+<td data-label="就职岗位">Asset Management</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Science in Applied Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://sps.columbia.edu/academics/masters/applied-analytics" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">沈*</td>
+<td data-label="就职单位">AlixPartners</td>
+<td data-label="就职岗位">Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Science in Applied Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://sps.columbia.edu/academics/masters/applied-analytics" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">刘*</td>
+<td data-label="就职单位">Ernst &amp; Young - Parthenon</td>
+<td data-label="就职岗位">Senior Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Arts in Economics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://econ.columbia.edu/masters/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">侯*</td>
+<td data-label="就职单位">University of Zurich</td>
+<td data-label="就职岗位">Research Assistant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Science in Accounting and Fundamental Analysis</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://academics.business.columbia.edu/msafa" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">某私募基金</td>
+<td data-label="就职岗位">Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Columbia University</td>
+<td data-label="毕业项目">Master of Science in Accounting and Fundamental Analysis</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://academics.business.columbia.edu/msafa" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">胡*</td>
+<td data-label="就职单位">九大投行</td>
+<td data-label="就职岗位">Sales and Trading</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Duke University</td>
+<td data-label="毕业项目">Master of Quantitative Management: Risk Track</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.fuqua.duke.edu/programs/mqm-business-analytics/tracks" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">黄*</td>
+<td data-label="就职单位">华盛顿特区某公司</td>
+<td data-label="就职岗位">Data Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Duke University</td>
+<td data-label="毕业项目">Master of Quantitative Management: Risk Track</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.fuqua.duke.edu/programs/mqm-business-analytics/tracks" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">陆*</td>
+<td data-label="就职单位">某信贷公司</td>
+<td data-label="就职岗位">Operations &amp; Risk Management Trainee</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Duke University</td>
+<td data-label="毕业项目">Master of Science in Quantitative Financial Economics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://gradschool.duke.edu/academics/programs-degrees/quantitative-financial-economics/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">原*</td>
+<td data-label="就职单位">Ernst &amp; Young</td>
+<td data-label="就职岗位">Manager</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Duke University</td>
+<td data-label="毕业项目">Master of Quantitative Management: Business Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.fuqua.duke.edu/programs/mqm-business-analytics" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">俞*</td>
+<td data-label="就职单位">Dell</td>
+<td data-label="就职岗位">Advisor</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Duke University</td>
+<td data-label="毕业项目">Master of Management Studies</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.fuqua.duke.edu/programs/mms" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">齐*</td>
+<td data-label="就职单位">Capital One</td>
+<td data-label="就职岗位">Senior Business Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Duke University</td>
+<td data-label="毕业项目">Master of Quantitative Management: Business Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.fuqua.duke.edu/programs/mqm-business-analytics" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">杨*</td>
+<td data-label="就职单位">Cadence Design Systems</td>
+<td data-label="就职岗位">Sr. Sales Operations Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Duke University</td>
+<td data-label="毕业项目">Master of Quantitative Management: Business Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.fuqua.duke.edu/programs/mqm-business-analytics" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">晏*</td>
+<td data-label="就职单位">Intel</td>
+<td data-label="就职岗位">Market Intelligence Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Duke University</td>
+<td data-label="毕业项目">Master of Quantitative Management: Business Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.fuqua.duke.edu/programs/mqm-business-analytics" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">刘*</td>
+<td data-label="就职单位">Ernst &amp; Young</td>
+<td data-label="就职岗位">IT Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Northwestern University</td>
+<td data-label="毕业项目">Master of Science in Integrated Marketing Communications (IMC)</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.medill.northwestern.edu/imc/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">江*</td>
+<td data-label="就职单位">美国某公司</td>
+<td data-label="就职岗位">Marketing Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Northwestern University</td>
+<td data-label="毕业项目">Master of Science in Integrated Marketing Communications</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.medill.northwestern.edu/imc/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">郑*</td>
+<td data-label="就职单位">Uber</td>
+<td data-label="就职岗位">Solution Lead</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Northwestern University</td>
+<td data-label="毕业项目">Master of Science in Analytics (MSiA)</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.mccormick.northwestern.edu/machine-learning-data-science/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">陈*</td>
+<td data-label="就职单位">LinkedIn</td>
+<td data-label="就职岗位">Data Scientist</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Johns Hopkins University</td>
+<td data-label="毕业项目">Master of Science in Business Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://carey.jhu.edu/programs/master-science-programs/ms-business-analytics-artificial-intelligence" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">沙*</td>
+<td data-label="就职单位">Fannie Mae</td>
+<td data-label="就职岗位">UTA Testing Associate</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Johns Hopkins University</td>
+<td data-label="毕业项目">Master of Science in Finance</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://carey.jhu.edu/programs/master-science-programs/ms-finance-full-time" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">汪*</td>
+<td data-label="就职单位">法国巴黎银行（中国）有限公司</td>
+<td data-label="就职岗位">Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Johns Hopkins University</td>
+<td data-label="毕业项目">Master of Science in Marketing</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://carey.jhu.edu/programs/master-science-programs/ms-marketing-full-time" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">罗*</td>
+<td data-label="就职单位">Lexus China</td>
+<td data-label="就职岗位">Marketing Associate</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Johns Hopkins University</td>
+<td data-label="毕业项目">Master of Business Administration - Information Systems</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://carey.jhu.edu/programs/master-science-programs/ms-information-systems-artificial-intelligence" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">王*</td>
+<td data-label="就职单位">CWP Consulting, LLC</td>
+<td data-label="就职岗位">Business Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Johns Hopkins University</td>
+<td data-label="毕业项目">Master of Arts in International Economics and Finance</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://sais.jhu.edu/academics/degree-programs/master-degrees/master-international-economics-and-finance-mief" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">林*</td>
+<td data-label="就职单位">World Bank Group</td>
+<td data-label="就职岗位">Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Cornell University</td>
+<td data-label="毕业项目">Master of Professional Studies in Management - Accounting Specialization</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.johnson.cornell.edu/programs/specialized-masters/mps-in-management-accounting-specialization/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">冯*</td>
+<td data-label="就职单位">Deloitte China</td>
+<td data-label="就职岗位">Accounting</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Cornell University</td>
+<td data-label="毕业项目">Master of Management in Hospitality</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://sha.cornell.edu/admissions-programs/graduate/mmh/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">周*</td>
+<td data-label="就职单位">Boston Consulting Group (BCG)</td>
+<td data-label="就职岗位">Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Cornell University</td>
+<td data-label="毕业项目">Master of Professional Studies in Applied Economics and Management</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://dyson.cornell.edu/programs/graduate/mps/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">钟*</td>
+<td data-label="就职单位">HSBC Bank (Ningbo Branch)</td>
+<td data-label="就职岗位">Assistant to General Manager</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Cornell University</td>
+<td data-label="毕业项目">Master of Professional Studies in Management</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.johnson.cornell.edu/programs/specialized-masters/mps-in-management/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">谢*</td>
+<td data-label="就职单位">DotHouse Health</td>
+<td data-label="就职岗位">HR Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Cornell University</td>
+<td data-label="毕业项目">Master of Management in Hospitality</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://sha.cornell.edu/admissions-programs/graduate/mmh/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">严*</td>
+<td data-label="就职单位">Westmont Hospitality Group</td>
+<td data-label="就职岗位">Associate, Asset Management</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of California, Los Angeles</td>
+<td data-label="毕业项目">Master of Science in Business Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.anderson.ucla.edu/degrees/master-of-science-in-business-analytics-msba" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">施*</td>
+<td data-label="就职单位">ZS Associates</td>
+<td data-label="就职岗位">Decision Analytics Associate</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of California, Los Angeles</td>
+<td data-label="毕业项目">Master of Science in Business Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.anderson.ucla.edu/degrees/master-of-science-in-business-analytics-msba" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">邱*</td>
+<td data-label="就职单位">Livongo Health</td>
+<td data-label="就职岗位">Data Analyst/Scientist</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of California, Los Angeles</td>
+<td data-label="毕业项目">Master of Quantitative Economics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://master.econ.ucla.edu/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">程*</td>
+<td data-label="就职单位">Silverhorn Group</td>
+<td data-label="就职岗位">Investment Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Michigan at Ann Arbor</td>
+<td data-label="毕业项目">Master of Science in Information</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.si.umich.edu/programs/master-science-information" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">赵*</td>
+<td data-label="就职单位">Deloitte Insight Studio; Beijing Youth Daily</td>
+<td data-label="就职岗位">UX Designer; Journalist</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Carnegie Mellon University</td>
+<td data-label="毕业项目">Master of Science in Business Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.cmu.edu/tepper/programs/master-business-analytics/full-time/index.html" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">程*</td>
+<td data-label="就职单位">国内某互联网公司</td>
+<td data-label="就职岗位">Data Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Carnegie Mellon University</td>
+<td data-label="毕业项目">Master of Information Systems Management - Business Intelligence &amp; Data Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.heinz.cmu.edu/programs/information-systems-management-mism/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">周*</td>
+<td data-label="就职单位">FedEx</td>
+<td data-label="就职岗位">Data Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Emory University</td>
+<td data-label="毕业项目">Master of Science in Business Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://goizueta.emory.edu/msba" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">曹*</td>
+<td data-label="就职单位">Credit Karma</td>
+<td data-label="就职岗位">Senior Analyst II</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Southern California</td>
+<td data-label="毕业项目">Master of Accounting</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.marshall.usc.edu/programs/graduate-programs/accounting-masters/master-of-accounting" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">何*</td>
+<td data-label="就职单位">BPM LLP</td>
+<td data-label="就职岗位">Audit Senior</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Southern California</td>
+<td data-label="毕业项目">Master of Science in Business Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.marshall.usc.edu/programs/graduate-programs/specialized-masters-programs/master-science-business-analytics" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">窦*</td>
+<td data-label="就职单位">Farmers Insurance; Magiclytics</td>
+<td data-label="就职岗位">Data Analyst; Social Media Data Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Southern California</td>
+<td data-label="毕业项目">Master of Science in Business Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.marshall.usc.edu/programs/graduate-programs/specialized-masters-programs/master-science-business-analytics" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">赵*</td>
+<td data-label="就职单位">Lionsgate Entertainment</td>
+<td data-label="就职岗位">Business Intelligence Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">New York University</td>
+<td data-label="毕业项目">Master of Arts in Economics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://as.nyu.edu/departments/econ/graduate/ma.html" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">杨*</td>
+<td data-label="就职单位">香港某买方公司</td>
+<td data-label="就职岗位">Macro Multi-Asset &amp; Bitcoin Associate</td>
+</tr>
+<tr>
+<td data-label="毕业院校">New York University</td>
+<td data-label="毕业项目">Master of Science in Project Management</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.sps.nyu.edu/homepage/academics/masters-degrees/ms-in-project-management.html" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">刘*</td>
+<td data-label="就职单位">PetroChina</td>
+<td data-label="就职岗位">N/A</td>
+</tr>
+<tr>
+<td data-label="毕业院校">New York University</td>
+<td data-label="毕业项目">Master of Science in Integrated Marketing</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.sps.nyu.edu/homepage/academics/masters-degrees/ms-in-integrated-marketing.html" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">李*</td>
+<td data-label="就职单位">Illuminera Consulting</td>
+<td data-label="就职岗位">Strategy Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">New York University</td>
+<td data-label="毕业项目">Master of Science in Integrated Marketing</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.sps.nyu.edu/homepage/academics/masters-degrees/ms-in-integrated-marketing.html" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">李*</td>
+<td data-label="就职单位">BIM International Services; JPMorgan Chase</td>
+<td data-label="就职岗位">Co-founder; Teller</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Georgia Institute of Technology</td>
+<td data-label="毕业项目">Master of Science in Supply Chain Engineering</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.isye.gatech.edu/academics/masters/degrees/ms-supply-chain-engineering" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">秘*</td>
+<td data-label="就职单位">Tesla</td>
+<td data-label="就职岗位">Global Supply Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Texas at Austin</td>
+<td data-label="毕业项目">Master of Science in Business Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.mccombs.utexas.edu/graduate/specialized-masters/ms-business-analytics/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">屠*</td>
+<td data-label="就职单位">Indeed</td>
+<td data-label="就职岗位">Product Scientist</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Boston College</td>
+<td data-label="毕业项目">Master of Science in Finance</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.bc.edu/bc-web/schools/carroll-school/graduate/ms-programs/ms-in-finance.html" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">丁*</td>
+<td data-label="就职单位">Brown Brothers Harriman</td>
+<td data-label="就职岗位">Operations Specialist</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Wisconsin–Madison</td>
+<td data-label="毕业项目">Master of Accountancy</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://business.wisc.edu/graduate/masters/accountancy/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">吴*</td>
+<td data-label="就职单位">JPMorgan Chase</td>
+<td data-label="就职岗位">Reconciliation Specialist</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Boston University</td>
+<td data-label="毕业项目">Master of Arts in Advertising</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.bu.edu/com/academics/advertising/ms-in-advertising/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">王*</td>
+<td data-label="就职单位">国内某新媒体公司</td>
+<td data-label="就职岗位">New Media Position</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Boston University</td>
+<td data-label="毕业项目">Master of Science in Financial Mathematics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.bu.edu/questrom/graduate-programs/specialty-masters-programs/ms-in-mathematical-finance-and-financial-technology/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">Adaptive Investment Solutions, LLC</td>
+<td data-label="就职岗位">Quant Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Rochester</td>
+<td data-label="毕业项目">Master of Science in Marketing Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://simon.rochester.edu/programs/full-time-ms-in-marketing-analytics" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">李*</td>
+<td data-label="就职单位">罗切斯特某企业</td>
+<td data-label="就职岗位">Data Warehousing Developer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Rochester</td>
+<td data-label="毕业项目">Master of Science in Marketing Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://simon.rochester.edu/programs/full-time-ms-in-marketing-analytics" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">王*</td>
+<td data-label="就职单位">Hertz</td>
+<td data-label="就职岗位">Revenue Management Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Rochester</td>
+<td data-label="毕业项目">Master of Science in Marketing Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://simon.rochester.edu/programs/full-time-ms-in-marketing-analytics" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">李*</td>
+<td data-label="就职单位">Moran Group</td>
+<td data-label="就职岗位">Search Engine Marketing Specialist</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Rochester</td>
+<td data-label="毕业项目">Master of Science in Marketing Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://simon.rochester.edu/programs/full-time-ms-in-marketing-analytics" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">Zeno Group</td>
+<td data-label="就职岗位">Research &amp; Analytics</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Rochester</td>
+<td data-label="毕业项目">Master of Science in Finance</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://simon.rochester.edu/programs/full-time-ms-in-finance" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">PepsiCo</td>
+<td data-label="就职岗位">Financial Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Rochester</td>
+<td data-label="毕业项目">Master of Science in Finance</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://simon.rochester.edu/programs/full-time-ms-in-finance" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">许*</td>
+<td data-label="就职单位">Google</td>
+<td data-label="就职岗位">Senior Data Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Wake Forest University</td>
+<td data-label="毕业项目">Master of Science in Business Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://business.wfu.edu/masters-in-business-analytics/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">杨*</td>
+<td data-label="就职单位">Amazon Web Services</td>
+<td data-label="就职岗位">Data Engineer</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Brandeis University</td>
+<td data-label="毕业项目">Master of Science in Finance</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.brandeis.edu/global/academics/msf/index.html" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">DoorDash</td>
+<td data-label="就职岗位">Finance &amp; Strategy Associate</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Fordham University</td>
+<td data-label="毕业项目">Master of Science in Quantitative Finance</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.fordham.edu/gabelli-school-of-business/academic-programs-and-admissions/graduate-programs/academic-programs/ms-programs/quantitative-finance/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">尹*</td>
+<td data-label="就职单位">GSR</td>
+<td data-label="就职岗位">Quantitative Analyst</td>
+</tr>
+<tr>
+<td data-label="毕业院校">Imperial College London</td>
+<td data-label="毕业项目">Master of Science in Finance and Accounting</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.imperial.ac.uk/business-school/masters/finance-accounting/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">马*</td>
+<td data-label="就职单位">PwC Consulting (Beijing)</td>
+<td data-label="就职岗位">M&amp;A Transaction Services Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Cambridge</td>
+<td data-label="毕业项目">Master of Philosophy in Management</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.jbs.cam.ac.uk/masters-degrees/mphil-management/" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">陈*</td>
+<td data-label="就职单位">DHL Consulting</td>
+<td data-label="就职岗位">Senior Consultant</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of Cambridge</td>
+<td data-label="毕业项目">Master of Philosophy in Finance and Economics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.postgraduate.study.cam.ac.uk/courses/directory/ececmpmfe" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">HSBC China</td>
+<td data-label="就职岗位">Fixed Income Trader</td>
+</tr>
+<tr>
+<td data-label="毕业院校">University of British Columbia</td>
+<td data-label="毕业项目">Master of Business Analytics</td>
+<td class="link-cell" data-label="毕业项目链接"><a href="https://www.sauder.ubc.ca/programs/masters-degrees/mban" target="_blank"><i class="fas fa-link"></i> 项目链接</a></td>
+<td data-label="毕业生化名">张*</td>
+<td data-label="就职单位">Brex</td>
+<td data-label="就职岗位">Operations Analyst</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="footer">
+<p>© 棕榈大道教育科技（北京）有限公司 | 数据更新时间: 2025年07月</p>
+</div>
+</div>
+<script>
+        // Tab切换功能
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', function() {
-                // 移除所有标签页的active类
-                document.querySelectorAll('.tab').forEach(t => {
-                    t.classList.remove('active');
-                });
+                // 移除所有active类
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
                 
-                // 移除所有内容区域的active类
-                document.querySelectorAll('.tab-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                
-                // 添加当前标签的active类
+                // 添加active类到当前tab
                 this.classList.add('active');
-                
-                // 显示对应的内容
                 const tabId = this.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
             });
         });
 
-        // 渲染表格行
-        function renderTableRows(data, tbodyId, page = 1) {
-            const tbody = document.getElementById(tbodyId);
-            tbody.innerHTML = '';
+        // 搜索功能
+        const searchBox = document.querySelector('.search-box');
+        searchBox.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const activeTable = document.querySelector('.tab-content.active table tbody');
             
-            const start = (page - 1) * rowsPerPage;
-            const end = Math.min(start + rowsPerPage, data.length);
-            const currentData = data.slice(start, end);
-            
-            if (currentData.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" class="no-results">未找到匹配的数据</td></tr>`;
-                return;
-            }
-            
-            currentData.forEach(row => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${row[0]}</td>
-                    <td>${row[1]}</td>
-                    <td><a href="${row[2]}" class="program-link" target="_blank">查看项目</a></td>
-                    <td>${row[3]}</td>
-                    <td>${row[4]}</td>
-                    <td>${row[5]}</td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        // 渲染分页按钮
-        function renderPagination(data, paginationId, tableId) {
-            const totalPages = Math.ceil(data.length / rowsPerPage);
-            const pagination = document.getElementById(paginationId);
-            pagination.innerHTML = '';
-            
-            if (totalPages === 0) return;
-            
-            // 上一页按钮
-            const prevButton = document.createElement('button');
-            prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
-            prevButton.addEventListener('click', () => {
-                const currentPage = parseInt(pagination.querySelector('.active')?.textContent || '1');
-                if (currentPage > 1) {
-                    changePage(currentPage - 1, data, paginationId, tableId);
-                }
-            });
-            pagination.appendChild(prevButton);
-            
-            // 页码按钮
-            const maxButtons = 5; // 最多显示5个页码按钮
-            let startPage, endPage;
-            
-            if (totalPages <= maxButtons) {
-                startPage = 1;
-                endPage = totalPages;
-            } else {
-                const currentPage = parseInt(pagination.querySelector('.active')?.textContent || '1');
-                const halfMax = Math.floor(maxButtons / 2);
+            if (activeTable) {
+                const rows = activeTable.querySelectorAll('tr');
                 
-                if (currentPage <= halfMax + 1) {
-                    startPage = 1;
-                    endPage = maxButtons;
-                } else if (currentPage >= totalPages - halfMax) {
-                    startPage = totalPages - maxButtons + 1;
-                    endPage = totalPages;
-                } else {
-                    startPage = currentPage - halfMax;
-                    endPage = currentPage + halfMax;
-                }
-            }
-            
-            for (let i = startPage; i <= endPage; i++) {
-                const button = document.createElement('button');
-                button.textContent = i;
-                if (i === 1) button.classList.add('active');
-                
-                button.addEventListener('click', () => {
-                    changePage(i, data, paginationId, tableId);
+                rows.forEach(row => {
+                    const rowText = row.textContent.toLowerCase();
+                    if (rowText.includes(searchTerm)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
                 });
-                
-                pagination.appendChild(button);
             }
-            
-            // 下一页按钮
-            const nextButton = document.createElement('button');
-            nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
-            nextButton.addEventListener('click', () => {
-                const currentPage = parseInt(pagination.querySelector('.active')?.textContent || '1');
-                if (currentPage < totalPages) {
-                    changePage(currentPage + 1, data, paginationId, tableId);
-                }
-            });
-            pagination.appendChild(nextButton);
-        }
-
-        // 切换页面
-        function changePage(page, data, paginationId, tableId) {
-            // 更新按钮状态
-            const pagination = document.getElementById(paginationId);
-            pagination.querySelectorAll('button').forEach(button => {
-                button.classList.remove('active');
-                if (button.textContent == page) {
-                    button.classList.add('active');
-                }
-            });
-            
-            // 渲染表格内容
-            const tbodyId = tableId.replace('table', 'tbody');
-            renderTableRows(data, tbodyId, page);
-        }
-
-        // 初始化表格和分页
-        function initTable(data, tableId, paginationId) {
-            renderTableRows(data, tableId.replace('table', 'tbody'));
-            renderPagination(data, paginationId, tableId);
-            
-            // 搜索功能 - 只搜索毕业院校（第一列）
-            const searchInput = document.querySelector(`.search-input[data-table="${tableId.split('-')[0]}"]`);
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                if (searchTerm.trim() === '') {
-                    renderTableRows(data, tableId.replace('table', 'tbody'));
-                    renderPagination(data, paginationId, tableId);
-                    return;
-                }
-                
-                const filteredData = data.filter(row => 
-                    row[0].toLowerCase().includes(searchTerm)
-                );
-                
-                renderTableRows(filteredData, tableId.replace('table', 'tbody'));
-                renderPagination(filteredData, paginationId, tableId);
-            });
-        }
-
-        // 页面加载完成后初始化
-        document.addEventListener('DOMContentLoaded', () => {
-            // 初始化三个表格
-            initTable(humanitiesData, 'humanities-table', 'humanities-pagination');
-            initTable(stemData, 'stem-table', 'stem-pagination');
-            initTable(businessData, 'business-table', 'business-pagination');
-            
-            // 表格行悬停效果
-            document.querySelectorAll('tbody tr').forEach(row => {
-                row.addEventListener('mouseenter', function() {
-                    this.style.transition = 'background-color 0.2s ease';
-                });
-            });
         });
     </script>
 </body>
